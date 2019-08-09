@@ -1,10 +1,6 @@
-package br.com.pedrohos.ed;
+package br.com.pedrohos.ed.vetor;
 
-/**
- * Hello world!
- */
-public final class App {
-    private App() {}
+public final class AppVetor {
 
     public static void main(String[] args) {
        

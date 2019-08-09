@@ -1,4 +1,4 @@
-package br.com.pedrohos.ed;
+package br.com.pedrohos.ed.vetor;
 
 import java.util.Arrays;
 
