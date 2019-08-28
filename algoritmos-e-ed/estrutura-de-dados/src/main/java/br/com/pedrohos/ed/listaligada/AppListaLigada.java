@@ -20,9 +20,20 @@ public class AppListaLigada {
 		lista.adiciona(2, "Noel");
 		System.out.println(lista);
 		
+		lista.removeDoComeco();
+		System.out.println(lista);
+		
+		lista.removeDoFim();
+		System.out.println(lista);
+		
+		lista.remove(2);
+		System.out.println(lista);
+		
 		System.out.println("\n");
 		System.out.println("Tamanho da Lista: " + lista.tamanho());
-		System.out.println("Pegando na posição [2]: " + lista.pega(2));
+		System.out.println("Pegando na posição [0]: " + lista.pega(0));
+		System.out.println("Contem José? " + lista.contem("José"));
+		System.out.println("Contem Taís? " + lista.contem("Taís"));
 		
 	}
 
