@@ -26,22 +26,24 @@ int TLista_EhVazia(TLista *pLista) {
 }
 
 int TLista_Insere(TLista *pLista, TItem x) {
-	
+
 	if(pLista->Ultimo > MAXTAM) {
 		return 0;
 	}
-	
+
 	pLista->Item[pLista->Ultimo-1] = x;
 	pLista->Ultimo++;
 	return 1;
 }
 
 void main() {
+
 	printf("###### LISTA LINEAR POR ARRANJO ######\n");
+
 	TLista *pLista = (TLista *) malloc(sizeof(TLista));
 	TLista_Inicia(pLista);
-	printf("%d\n A Lista é vazia? ",TLista_EhVazia(pLista));
-	
+	printf("%d\n A Lista é vazia? ", TLista_EhVazia(pLista));
+
 	TItem itemA;
 	itemA.Chave = 10;
 	TLista_Insere(pLista, itemA);
@@ -49,6 +51,5 @@ void main() {
 	printf("%d\n A Lista é vazia? ", TLista_EhVazia(pLista));
 	printf("\n");
 
-	printf("%d", itemA.Chave);
+	
 }
-
