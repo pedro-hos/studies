@@ -146,4 +146,19 @@ void MaxMin1(int* A, int n, int* pMax, int* pMin) {
 }
 ```
 
-Neste caso vamos pensar no Melhor caso, uma lista ordenada em ordem **crescente**: `int * A = [1,2,3,4,5,6 ...]` Neste caso, o próximo elemento da lista, sempre será maior que o anterior, sendo assim a segunda condição nunca é chamada, já que o `*pMin` já inicia com o primeiro elemento da lista, e a condição `else` impede que o segundo `if` seja chamado sem necessidade. Temos então que: `f(n) = (n-1)`
+Neste caso vamos pensar no **Melhor Caso**, uma lista ordenada em ordem **crescente**: `int * A = [1,2,3,4,5,6 ...]` Neste caso, o próximo elemento da lista, sempre será maior que o anterior, sendo assim a segunda condição nunca é chamada, já que o `*pMin` já inicia com o primeiro elemento da lista, e a condição `else` impede que o segundo `if` seja chamado sem necessidade. Temos então que: `f(n) = (n-1)`
+
+Pensando agora no **Pior Caso**, numa lista ordenada de forma **decrescente** `int * A = [10,9,8,7 ...]`, neste caso específico, a primeira e a segunda condições serão chamadas, logo `f(n) = 2(n-1)`
+
+Já no **Caso Médio**, vamos pensar que ele vai passar metade das vezes pelo Melhor Caso e metade das vezes pelo Pior Caso, temos então:
+
+```
+1/2(n-1) + 1/2(n-1)2 = (2n-2 + n -2)/2 = (3n - 3)/2 = 3(n-1)/2
+```
+
+Por fim, teremos:
+
+|Algorítmo|Melhor Caso|Pior Caso|Caso Médio|
+|---------|-----------|---------|----------|
+|MaxMin1|`f(n)=2(n-1)`|`f(n)=2(n-1)`|`f(n)=2(n-1)`|
+|MaxMin2|`f(n)=n-1`|`f(n)=2(n-1)`|`f(n)=3(n-1)/2`|
