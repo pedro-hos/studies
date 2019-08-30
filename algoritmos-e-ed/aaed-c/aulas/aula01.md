@@ -108,3 +108,42 @@ Considere o problema de achar um arquivo dentro de uma lista de arquivos passand
 * Melhor caso: `f(n) = 1`
 * Pior caso: `f(n) = n`
 * Caso Médio: Média aritmética do pior caso e do melhor caso, logo temos que `f(n) = (n+1)/2`
+
+Vamos analisar o seguinte caso:
+
+```
+void MaxMin1(int* A, int n, int* pMax, int* pMin) {
+  int i;
+  *pMax = A[0];
+  *pMin = A[0];
+  for (i = 1; i < n; i++) {
+      if (A[i] > *pMax) *pMax = A[i];
+      if (A[i] < *pMin) *pMin = A[i];
+    }
+}
+```
+
+Aqui temos que o custo da execução será `(n-1)` para o primeiro `if` e `(n-1)` para o segundo `if` logo `f(n) = 2(n-1)`. Como para todo `n` da entrada os 2 `ifs` serão executados, temos então que:
+
+|Algorítmo|Melhor Caso|Pior Caso|Caso Médio|
+|---------|-----------|---------|----------|
+|MaxMin1|`f(n)=2(n-1)`|`f(n)=2(n-1)`|`f(n)=2(n-1)`|
+
+Existe uma maneira de melhorar o algoritmo, que é impedindo que que a segunda comparação: `if (A[i] < *pMin) *pMin = A[i];` seja feita, caso a primeira: `if (A[i] > *pMax) *pMax = A[i];` satisfaça. Para isso, colocamos um `else`:
+
+```
+void MaxMin1(int* A, int n, int* pMax, int* pMin) {
+  int i;
+  *pMax = A[0];
+  *pMin = A[0];
+  for (i = 1; i < n; i++) {
+      if (A[i] > *pMax) {
+        *pMax = A[i];
+      } else if (A[i] < *pMin) {
+        *pMin = A[i];
+      }
+    }
+}
+```
+
+Neste caso vamos pensar no Melhor caso, uma lista ordenada em ordem **crescente**: `int * A = [1,2,3,4,5,6 ...]` Neste caso, o próximo elemento da lista, sempre será maior que o anterior, sendo assim a segunda condição nunca é chamada, já que o `*pMin` já inicia com o primeiro elemento da lista, e a condição `else` impede que o segundo `if` seja chamado sem necessidade. Temos então que: `f(n) = (n-1)`
