@@ -1,5 +1,8 @@
 package br.com.pedrohos.ed.aula03;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -30,10 +33,28 @@ public class Pedro_Silva_aula3Pratico {
      * vez. Uma linha em branco deve ser impressa após cada lista de permutações.
      * 
      * @param args
+     * @throws IOException 
+     * @throws NumberFormatException 
      */
 
-    public static void main(String[] args) {
-        permutacao(3, "ab", "abc", "bca");
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        
+        InputStreamReader ir = new InputStreamReader(System.in);
+        BufferedReader in = new BufferedReader(ir);
+        
+        int size = Integer.parseInt(in.readLine());
+        String[] strings = new String[size];
+        int count = 0;
+        
+        while(count != size) {
+            strings[count] = in.readLine();
+            count++;
+        }
+        
+        in.close();
+        ir.close();
+        
+        permutacao(size, strings);
         
         values.forEach((k,v) -> {
             for(int i = 0; i < v.length; i++) {
@@ -86,7 +107,6 @@ public class Pedro_Silva_aula3Pratico {
             int char1 = Character.getNumericValue(lista[i].charAt(0));
             
             for(int j = i+1; j < lista.length; j++) {
-                
                 int char2 = Character.getNumericValue(lista[j].charAt(0));
                 index = char2 < char1 ? j : index;
             }
@@ -95,6 +115,11 @@ public class Pedro_Silva_aula3Pratico {
             lista[index] = lista[i];
             lista[i] = menor;
         }
+        
+        /**
+         * Usando a lib ordena melhor
+         * List<String> collect = permutacoes.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toUnmodifiableList());
+         */
         
         return lista;
     }
